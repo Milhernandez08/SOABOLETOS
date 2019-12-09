@@ -4,6 +4,9 @@ addons:
 language: node_js
 node_js: 
   - "10.17"
+cache:  
+  directories:
+    - "node_modules"
 branches:
   only:
     - master

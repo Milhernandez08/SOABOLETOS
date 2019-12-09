@@ -2,7 +2,8 @@ sudo: required
 addons:
   chrome: stable
 language: node_js
-node_js: 10.17.0
+node_js: 
+  - "10.17"
 branches:
   only:
     - master
@@ -10,3 +11,19 @@ before_script:
   - npm install
 script:
   - node dist
+
+
+
+# sudo: required
+# addons:
+#   chrome: stable
+# language: node_js
+# node_js:
+#   - "10.10"
+# branches:
+#   only:
+#     - master
+# before_script:
+#   - npm install -g @angular/cli
+# script:
+#   - npm install

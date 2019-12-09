@@ -1,0 +1,13 @@
+sudo: required
+addons:
+  chrome: stable
+language: node_js
+node_js: 10.17.0
+branches:
+  only:
+    - master
+before_script:
+  - npm i -g npm@version-number
+script:
+  - npm install
+  - node dist

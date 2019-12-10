@@ -130,14 +130,15 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
     }))();
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const charge = yield stripe.charges.create({
-            amount: 10000,
+            total: request.body['total'],
+            amount: +total * 10000,
             currency: 'MXN',
             description: 'Example charge',
             source: request.body['token'],
             statement_descriptor: 'Custom descriptor',
         });
     }))();
-    // response.status(200).json(1);
+    response.status(200).json(1);
 });
 // const crear = (request, response) => {
 //     const { nombre_cliente, correo, metodo_pago, tipo_boleto, fecha_salida, fecha_regreso, num_asiento_cliente, costo } = request.body;

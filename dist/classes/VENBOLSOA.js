@@ -123,6 +123,12 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
         source: request.body['token']
     });*/
     (() => __awaiter(void 0, void 0, void 0, function* () {
+        const cliente = yield stripe.customers.create({
+            name: request.body['nombre'],
+            email: request.body['correo'],
+        });
+    }))();
+    (() => __awaiter(void 0, void 0, void 0, function* () {
         const charge = yield stripe.charges.create({
             amount: 10000,
             currency: 'MXN',

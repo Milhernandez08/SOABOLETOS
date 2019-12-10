@@ -130,7 +130,7 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
             amount: Math.round(total * 100),
             currency: 'MXN',
             description: 'Pago del cliente: ' + request.body['nombre'],
-            email: request.body['correo'],
+            customer: request.body['correo'],
             source: request.body['token'],
             statement_descriptor: 'Pago del boleto',
         });

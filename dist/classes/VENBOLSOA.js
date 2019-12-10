@@ -122,12 +122,15 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
         email: request.body['correo'],
         source: request.body['token']
     });*/
-    const charge = yield stripe.charges.create({
-        amount: '3000',
-        currency: 'usd',
-        customer: request.body['token'],
-        description: 'Agencia de viajes'
-    });
+    (() => __awaiter(void 0, void 0, void 0, function* () {
+        const charge = yield stripe.charges.create({
+            amount: 999,
+            currency: 'usd',
+            description: 'Example charge',
+            source: request.body['token'],
+            statement_descriptor: 'Custom descriptor',
+        });
+    }))();
     // response.status(200).json(1);
 });
 // const crear = (request, response) => {

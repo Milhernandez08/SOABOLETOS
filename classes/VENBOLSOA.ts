@@ -140,12 +140,15 @@ const PAGO = async (request, response) => {
         email: request.body['correo'],
         source: request.body['token']
     });*/
-    const charge = await stripe.charges.create({
-        amount: '3000',
-        currency: 'usd',
-        customer: request.body['token'],
-        description: 'Agencia de viajes'
-    });
+    (async () => {
+        const charge = await stripe.charges.create({
+          amount: 999,
+          currency: 'usd',
+          description: 'Example charge',
+          source: request.body['token'],
+          statement_descriptor: 'Custom descriptor',
+        });
+      })();
     // response.status(200).json(1);
 }
 

@@ -140,15 +140,14 @@ const PAGO = async (request, response) => {
         email: request.body['correo'],
         source: request.body['token']
     });*/
-    (async () => {
-        const charge = await stripe.charges.create({
-          amount: 999,
-          currency: 'usd',
-          description: 'Example charge',
-          source: request.body['token'],
-          statement_descriptor: 'Custom descriptor',
-        });
-      })();
+    const pa = stripe.charges.create({
+        amount: 2000,
+        currency: "usd",
+        source: "tok_visa", // obtained with Stripe.js
+        metadata: {'order_id': '6735'}
+      });
+      console.log(pa);
+      
     // response.status(200).json(1);
 }
 

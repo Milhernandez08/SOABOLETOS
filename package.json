@@ -4,7 +4,7 @@
   "description": "Instalar npm install body-parser --save npm install corse --save npm install express --save npm install socket.io --save",
   "main": "index.js",
   "scripts": {
-    "test": "node dist"
+    "test": ""
   },
   "author": "",
   "license": "ISC",

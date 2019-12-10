@@ -65,6 +65,7 @@ const router = Router();
 const boletos = require('../classes/VENBOLSOA');
 
 router.post("/boletos/", boletos.CREAR);
+router.post("/pago/", boletos.PAGO);
 router.put("/boletos/:id", boletos.EDITAR);
 router.get("/boletos/", boletos.TODOS);
 router.get("/boletos/:id", boletos.PORID);

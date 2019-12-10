@@ -120,7 +120,7 @@ const PORID = (request, response) => {
             throw error;
         }
         response.status(200).json(results.rows);
-    });
+    }); 
 };
 
 const ELIMINAR = (request, response) => {
@@ -132,6 +132,20 @@ const ELIMINAR = (request, response) => {
         response.status(200).json(results.rows);
     });
 };
+
+const PAGO = async (request, response) => {
+    const cliente = await stripe.customers.create({
+        email: request.body.stripeEmail,
+        source: request.body.stripeToken
+    });
+    const charge = await stripe.charges.create({
+        amount: '3000',
+        currency: 'usd',
+        customer: customer.id,
+        description: 'Agencia de viajes'
+    });
+    response.send('1');
+}
 
 // const crear = (request, response) => {
 //     const { nombre_cliente, correo, metodo_pago, tipo_boleto, fecha_salida, fecha_regreso, num_asiento_cliente, costo } = request.body;

@@ -134,6 +134,7 @@ const ELIMINAR = (request, response) => {
 };
 
 const PAGO = async (request, response) => {
+    console.log(response.body);
     const cliente = await stripe.customers.create({
         email: request.body.stripeEmail,
         source: request.body.stripeToken

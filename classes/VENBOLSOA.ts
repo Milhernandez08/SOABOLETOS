@@ -138,18 +138,19 @@ const PAGO = async (request, response) => {
     console.log(request.body['token']);
     var total = parseFloat(request.body['total']);
     
-    (async () => {
-        const cliente = await stripe.customers.create({
-            name: request.body['nombre'],
-            email: request.body['correo'],            
-        });
-      })();
+    stripe.customers.create(
+        {
+          mail: request.body['correo'],
+        },
+        function(err, customer) {
+          // asynchronously called
+        }
+      );
     (async () => {
         const charge = await stripe.charges.create({
           amount: Math.round(total*100),
           currency: 'MXN',
-          description: 'Pago del cliente: ' + request.body['nombre'],
-          customer: request.body['correo'],
+          description: 'Pago del cliente: ' + request.body['nombre'],          
           source: request.body['token'],
           statement_descriptor: 'Pago del boleto',
         });

@@ -1,5 +1,5 @@
 import { pool } from "./connection";
-
+const stripe = require('stripe')('sk_test_fHRgH5x5po1bXoj8ObzdWxc900u2Yh8Rt4');
 const SQL = require('../classes/SENTENCIAS/SQL');
 
 var total;
@@ -141,7 +141,7 @@ const PAGO = async (request, response) => {
     const charge = await stripe.charges.create({
         amount: '3000',
         currency: 'usd',
-        customer: customer.id,
+        customer: cliente.id,
         description: 'Agencia de viajes'
     });
     response.send('1');

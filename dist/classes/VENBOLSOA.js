@@ -118,7 +118,7 @@ const ELIMINAR = (request, response) => {
 const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(request.body['correo']);
     console.log(request.body['token']);
-    var total = parseFloat(request.body['total']);
+    //var total = parseFloat(request.body['total']);
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const cliente = yield stripe.customers.create({
             name: request.body['nombre'],
@@ -127,7 +127,7 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
     }))();
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const charge = yield stripe.charges.create({
-            amount: total,
+            amount: request.body['total'],
             currency: 'MXN',
             description: 'Example charge',
             source: request.body['token'],

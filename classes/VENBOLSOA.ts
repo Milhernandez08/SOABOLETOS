@@ -184,5 +184,6 @@ module.exports = {
     ASIENTO,
     PORID,
     ELIMINAR,
-    all
+    all,
+    PAGO
 }

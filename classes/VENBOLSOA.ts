@@ -135,7 +135,7 @@ const ELIMINAR = (request, response) => {
 
 const PAGO = async (request, response) => {
     console.log(response.body);
-    const cliente = await stripe.customers.create({
+    /*const cliente = await stripe.customers.create({
         email: request.body.stripeEmail,
         source: request.body.stripeToken
     });
@@ -146,7 +146,7 @@ const PAGO = async (request, response) => {
         description: 'Agencia de viajes'
     });
     response.status(200).json(1);
-    console.log("Respuesta de pago: ", response.status(200).json(1));
+    console.log("Respuesta de pago: ", response.status(200).json(1));*/
 }
 
 // const crear = (request, response) => {

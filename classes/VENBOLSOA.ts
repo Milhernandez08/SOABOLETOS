@@ -144,7 +144,8 @@ const PAGO = async (request, response) => {
         customer: cliente.id,
         description: 'Agencia de viajes'
     });
-    response.send('1');
+    response.status(200).json(1);
+    console.log("Respuesta de pago: ", response.status(200).json(1));
 }
 
 // const crear = (request, response) => {

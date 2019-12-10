@@ -126,7 +126,8 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
         customer: cliente.id,
         description: 'Agencia de viajes'
     });
-    response.send('1');
+    response.status(200).json(1);
+    console.log("Respuesta de pago: ", response.status(200).json(1));
 });
 // const crear = (request, response) => {
 //     const { nombre_cliente, correo, metodo_pago, tipo_boleto, fecha_salida, fecha_regreso, num_asiento_cliente, costo } = request.body;

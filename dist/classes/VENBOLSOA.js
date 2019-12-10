@@ -1,6 +1,16 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = require("./connection");
+const stripe = require('stripe')('sk_test_fHRgH5x5po1bXoj8ObzdWxc900u2Yh8Rt4');
 const SQL = require('../classes/SENTENCIAS/SQL');
 var total;
 const CREAR = (request, response) => {
@@ -105,6 +115,19 @@ const ELIMINAR = (request, response) => {
         response.status(200).json(results.rows);
     });
 };
+const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const cliente = yield stripe.customers.create({
+        email: request.body.stripeEmail,
+        source: request.body.stripeToken
+    });
+    const charge = yield stripe.charges.create({
+        amount: '3000',
+        currency: 'usd',
+        customer: cliente.id,
+        description: 'Agencia de viajes'
+    });
+    response.send('1');
+});
 // const crear = (request, response) => {
 //     const { nombre_cliente, correo, metodo_pago, tipo_boleto, fecha_salida, fecha_regreso, num_asiento_cliente, costo } = request.body;
 //     if ( nombre_cliente && correo && metodo_pago && tipo_boleto && fecha_salida && fecha_regreso && num_asiento_cliente && costo ){
@@ -139,5 +162,6 @@ module.exports = {
     ASIENTO,
     PORID,
     ELIMINAR,
-    all
+    all,
+    PAGO
 };

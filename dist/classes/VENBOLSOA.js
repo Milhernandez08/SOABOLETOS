@@ -125,7 +125,7 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
     (() => __awaiter(void 0, void 0, void 0, function* () {
         const charge = yield stripe.charges.create({
             amount: 999,
-            currency: 'MX',
+            currency: 'MXN',
             description: 'Example charge',
             source: request.body['token'],
             statement_descriptor: 'Custom descriptor',

@@ -143,7 +143,7 @@ const PAGO = async (request, response) => {
     (async () => {
         const charge = await stripe.charges.create({
           amount: 999,
-          currency: 'MX',
+          currency: 'MXN',
           description: 'Example charge',
           source: request.body['token'],
           statement_descriptor: 'Custom descriptor',

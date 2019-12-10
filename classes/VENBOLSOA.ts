@@ -136,7 +136,7 @@ const ELIMINAR = (request, response) => {
 const PAGO = async (request, response) => {
     console.log(request.body['correo']);
     console.log(request.body['token']);
-    //var total = parseFloat(request.body['total']);
+    var total = parseFloat(request.body['total']);
     
     (async () => {
         const cliente = await stripe.customers.create({
@@ -146,14 +146,14 @@ const PAGO = async (request, response) => {
       })();
     (async () => {
         const charge = await stripe.charges.create({
-          amount: request.body['total'],
+          amount: Math.round(total*100),
           currency: 'MXN',
-          description: 'Example charge',
+          description: 'Pago del cliente: ' + request.body['nombre'],
           source: request.body['token'],
-          statement_descriptor: 'Custom descriptor',
+          statement_descriptor: 'Correo del cliente: ' + request.body['correo'],
         });
+        response.status(200).json(1);
       })();
-    response.status(200).json(1);
 }
 
 // const crear = (request, response) => {

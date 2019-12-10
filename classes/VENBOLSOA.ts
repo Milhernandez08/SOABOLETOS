@@ -141,6 +141,12 @@ const PAGO = async (request, response) => {
         source: request.body['token']
     });*/
     (async () => {
+        const cliente = await stripe.customers.create({
+            name: request.body['nombre'],
+            email: request.body['correo'],            
+        });
+      })();
+    (async () => {
         const charge = await stripe.charges.create({
           amount: 10000,
           currency: 'MXN',

@@ -116,7 +116,7 @@ const ELIMINAR = (request, response) => {
     });
 };
 const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(response.body);
+    console.log(request.body);
     /*const cliente = await stripe.customers.create({
         email: request.body.stripeEmail,
         source: request.body.stripeToken

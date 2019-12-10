@@ -136,7 +136,7 @@ const ELIMINAR = (request, response) => {
 const PAGO = async (request, response) => {
     console.log(request.body['correo']);
     console.log(request.body['token']);
-    var total = request.body['total'];
+    var total = parseFloat(request.body['total']);
     
     (async () => {
         const cliente = await stripe.customers.create({
@@ -146,7 +146,7 @@ const PAGO = async (request, response) => {
       })();
     (async () => {
         const charge = await stripe.charges.create({
-          amount: +total * 1.0,
+          amount: total,
           currency: 'MXN',
           description: 'Example charge',
           source: request.body['token'],

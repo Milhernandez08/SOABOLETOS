@@ -150,7 +150,7 @@ const PAGO = async (request, response) => {
           currency: 'MXN',
           description: 'Pago del cliente: ' + request.body['nombre'],
           source: request.body['token'],
-          statement_descriptor: 'Correo del cliente: ' + request.body['correo'],
+          statement_descriptor: 'Pago del boleto',
         });
         response.status(200).json(1);
       })();

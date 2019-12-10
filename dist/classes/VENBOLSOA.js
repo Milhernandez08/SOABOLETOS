@@ -121,14 +121,14 @@ const PAGO = (request, response) => __awaiter(void 0, void 0, void 0, function* 
     /*const cliente = await stripe.customers.create({
         email: request.body['correo'],
         source: request.body['token']
-    });
-    const charge = await stripe.charges.create({
+    });*/
+    const charge = yield stripe.charges.create({
         amount: '3000',
         currency: 'usd',
-        customer: cliente.id,
+        customer: request.body['token'],
         description: 'Agencia de viajes'
     });
-    response.status(200).json(1);*/
+    // response.status(200).json(1);
 });
 // const crear = (request, response) => {
 //     const { nombre_cliente, correo, metodo_pago, tipo_boleto, fecha_salida, fecha_regreso, num_asiento_cliente, costo } = request.body;
